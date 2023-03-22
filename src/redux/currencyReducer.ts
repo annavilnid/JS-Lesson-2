@@ -1,6 +1,5 @@
 import { CurrencyReducersTypes } from './actions';
 
-
 export type CurrencyType = {
     currencyName: string;
     buyRate: number;
@@ -39,26 +38,16 @@ const initialState: CurrencyState = {
 };
 
 export const currencyReducer = (state: CurrencyState = initialState, action: CurrencyReducersTypes): CurrencyState => {
-    console.log('0');
-    // @ts-ignore
     switch (action.type) {
         case 'CurrencyExchange/CHANGE_CURRENCY_FIELD_TYPE':
-            console.log(action);
-            console.log('1');
-            console.log(action);
-            console.log(state);
             return {...state, amountOfBYN: action.payload.amountOfBYN, amountOfCurrency: action.payload.amountOfCurrency}
         case 'CurrencyExchange/CHANGE_CHANGE_ACTION':
-            console.log('2');
-            console.log(action);
             console.log(state);
-            let rate = state.currencies.filter(c => c.currencyName === state.currentCurrency)
-            return action.isBuying ? {...state, isBuying: action.isBuying, amountOfCurrency: (state.amountOfBYN / state.rate.buyRate)} : {...state, isBuying: action.isBuying, amountOfCurrency: '33'}
+            let rateAction = state.currencies.filter(c => c.currencyName === state.currentCurrency)[0];
+            return action.isBuying ? {...state, isBuying: action.isBuying, amountOfCurrency: ((+Number({...state}.amountOfBYN).toFixed(2) / rateAction.buyRate).toFixed(2))} : {...state, isBuying: action.isBuying, amountOfCurrency: ((+Number({...state}.amountOfBYN).toFixed(2) * rateAction.sellRate).toFixed(2))}
         case 'CurrencyExchange/CHANGE_CURRENT_CURRENCY':
-            console.log('3');
-            console.log(action);
-            console.log(state);
-            return {...state, currentCurrency: action.currentCurrency}
+            let rateCurrency = state.currencies.filter(c => c.currencyName === action.currentCurrency)[0];
+        return state.isBuying ? {...state, currentCurrency: action.currentCurrency, amountOfCurrency: ((+Number({...state}.amountOfBYN).toFixed(2) / rateCurrency.buyRate).toFixed(2))} : {...state, currentCurrency: action.currentCurrency, amountOfCurrency: ((+Number({...state}.amountOfBYN).toFixed(2) * rateCurrency.sellRate).toFixed(2))}
         default:
             return state;
     }

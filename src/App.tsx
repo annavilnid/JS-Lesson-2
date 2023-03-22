@@ -8,6 +8,8 @@ import Lesson3 from './lessons/lesson3/Lesson3';
 // import './lessons/lesson6/lesson6';
 import Lesson7 from './lessons/lesson7/lesson7';
 import Lesson8 from './lessons/lesson8/lesson8';
+import {Provider} from "react-redux";
+import {store} from "./redux/state";
 
 function App() {
     return (
@@ -20,3 +22,4 @@ function App() {
 }
 
 export default App;
+
