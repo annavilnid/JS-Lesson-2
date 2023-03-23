@@ -10,9 +10,14 @@ import {
 } from '../../redux/actions';
 import { connect, ConnectedProps } from 'react-redux';
 import {AppDispatch, IGlobalState} from "../../redux/state";
+//
+// type TProps = {
+//     currencies
+//     currentCurrency
+// }
+
 
 const CurrencyEContainer: React.FC<TProps> = props => {
-
     const {
         currencies,
         currentCurrency,
@@ -78,7 +83,7 @@ const CurrencyEContainer: React.FC<TProps> = props => {
     );
 };
 
-const mapStateToProps = ( { currency } : {currency: CurrencyState} ): CurrencyState => {
+const mapStateToProps = ({currency}: IGlobalState ): CurrencyState => {
     return {
         currencies: currency.currencies,
         currentCurrency: currency.currentCurrency,
@@ -108,7 +113,7 @@ const mapDispatchToProps = (dispatch: Dispatch<CurrencyReducersTypes>) : any => 
 };
 
 
-const connector = connect<IComponentStoreProps, IComponentDispatchProps, IComponentOwnProps, IStateStore>(mapStateToProps, mapDispatchToProps);
+const connector = connect(mapStateToProps, mapDispatchToProps);
 
 type TProps = ConnectedProps<typeof connector>;
 
