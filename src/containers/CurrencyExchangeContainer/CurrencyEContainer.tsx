@@ -8,13 +8,9 @@ import {
     СhangeCurrentCurrencyAC,
     CurrencyReducersTypes
 } from '../../redux/actions';
-import { connect, ConnectedProps } from 'react-redux';
+import { connect } from 'react-redux';
 import {AppDispatch, IGlobalState} from "../../redux/state";
-//
-// type TProps = {
-//     currencies
-//     currentCurrency
-// }
+
 
 
 const CurrencyEContainer: React.FC<TProps> = props => {
@@ -83,7 +79,7 @@ const CurrencyEContainer: React.FC<TProps> = props => {
     );
 };
 
-const mapStateToProps = ({currency}: IGlobalState ): CurrencyState => {
+const mapStateToProps = ({currency}: IGlobalState ): mapStateToPropsType => {
     return {
         currencies: currency.currencies,
         currentCurrency: currency.currentCurrency,
@@ -93,7 +89,7 @@ const mapStateToProps = ({currency}: IGlobalState ): CurrencyState => {
     };
 };
 
-const mapDispatchToProps = (dispatch: Dispatch<CurrencyReducersTypes>) : any => {
+const mapDispatchToProps = (dispatch: Dispatch<CurrencyReducersTypes>) : mapDispatchToPropsType  => {
     return {
         setCurrencyAmount(amountOfBYN: string, amountOfCurrency: string) {
             console.log('работает3')
@@ -112,10 +108,17 @@ const mapDispatchToProps = (dispatch: Dispatch<CurrencyReducersTypes>) : any => 
     };
 };
 
+type mapStateToPropsType = CurrencyState
 
-const connector = connect(mapStateToProps, mapDispatchToProps);
+type mapDispatchToPropsType = {
+    setCurrencyAmount: (amountOfBYN: string, amountOfCurrency: string) => void
+    setAction: (isBuying: boolean) => void
+    changeCurrency: (currency: string) => void
+}
 
-type TProps = ConnectedProps<typeof connector>;
+type TProps = mapStateToPropsType & mapDispatchToPropsType
+
+const connector = connect<mapStateToPropsType, mapDispatchToPropsType, IGlobalState, IGlobalState>(mapStateToProps, mapDispatchToProps);
 
 export default connector(CurrencyEContainer);
 
