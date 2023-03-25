@@ -11,8 +11,6 @@ import {
 import { connect } from 'react-redux';
 import {AppDispatch, IGlobalState} from "../../redux/state";
 
-
-
 const CurrencyEContainer: React.FC<TProps> = props => {
     const {
         currencies,
@@ -89,24 +87,27 @@ const mapStateToProps = ({currency}: IGlobalState ): mapStateToPropsType => {
     };
 };
 
-const mapDispatchToProps = (dispatch: Dispatch<CurrencyReducersTypes>) : mapDispatchToPropsType  => {
-    return {
-        setCurrencyAmount(amountOfBYN: string, amountOfCurrency: string) {
-            console.log('работает3')
-            console.log(amountOfBYN)
-            console.log(amountOfCurrency)
-            dispatch(ChangeCurrencyFieldAC(amountOfBYN, amountOfCurrency));
-        },
-        setAction(isBuying: boolean) {
-            console.log('работает4')
-            dispatch(ChangeActionAC(isBuying));
-        },
-        changeCurrency(currency: string) {
-            console.log('работает2')
-            dispatch(СhangeCurrentCurrencyAC(currency));
-        },
-    };
+
+// const mapDispatchToProps = (dispatch: Dispatch<CurrencyReducersTypes>) : mapDispatchToPropsType  => {
+//     return {
+//         setCurrencyAmount(amountOfBYN: string, amountOfCurrency: string) {
+//             dispatch(ChangeCurrencyFieldAC(amountOfBYN, amountOfCurrency));
+//         },
+//         setAction(isBuying: boolean) {
+//             dispatch(ChangeActionAC(isBuying));
+//         },
+//         changeCurrency(currency: string) {
+//             dispatch(СhangeCurrentCurrencyAC(currency));
+//         },
+//     };
+// };
+
+const mapDispatchToProps =  {
+        setCurrencyAmount: ChangeCurrencyFieldAC,
+        setAction: ChangeActionAC,
+        changeCurrency: СhangeCurrentCurrencyAC
 };
+
 
 type mapStateToPropsType = CurrencyState
 
