@@ -118,8 +118,9 @@ type mapDispatchToPropsType = {
 }
 
 type TProps = mapStateToPropsType & mapDispatchToPropsType
+type OwnProps = {}
 
-const connector = connect<mapStateToPropsType, mapDispatchToPropsType, IGlobalState, IGlobalState>(mapStateToProps, mapDispatchToProps);
+const connector = connect<mapStateToPropsType, mapDispatchToPropsType, OwnProps, IGlobalState>(mapStateToProps, mapDispatchToProps);
 
 export default connector(CurrencyEContainer);
 
