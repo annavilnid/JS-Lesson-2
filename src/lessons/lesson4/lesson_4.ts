@@ -7,18 +7,28 @@ console.log('lesson 4');
 // Task 01
 // Создайте промис, который постоянно находиться в состоянии pending.
 // В конструкторе промиса выведите в консоль сообщение "Promise is created".
+let promis1 = new Promise((res, rej) => {
+  console.log('Promise is created')
+});
 
 
 // Task 02
 // Создайте промис, который после создания сразу же переходит в состояние resolve
 // и возвращает строку 'Promise Data'
 // Получите данные промиса и выведите их в консоль
-
+let promisRes = new Promise((res, rej) => {
+  res('Promise is created')
+});
+console.log(promisRes)
 
 // Task 03
 // Создайте промис, который после создания сразу же переходит в состояние rejected
 // и возвращает строку 'Promise Error'
 // Получите данные промиса и выведите их в консоль
+let promisRej = new Promise((res, rej) => {
+  rej('Promise Error')
+});
+console.log(promisRej)
 
 
 // Task 04
