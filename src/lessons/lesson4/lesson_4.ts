@@ -1,4 +1,4 @@
-console.log('lesson 4');
+// console.log('lesson 4');
 
 // http://latentflip.com/loupe/?code=JC5vbignYnV0dG9uJywgJ2NsaWNrJywgZnVuY3Rpb24gb25DbGljaygpIHsKICAgIHNldFRpbWVvdXQoZnVuY3Rpb24gdGltZXIoKSB7CiAgICAgICAgY29uc29sZS5sb2coJ1lvdSBjbGlja2VkIHRoZSBidXR0b24hJyk7ICAgIAogICAgfSwgMjAwMCk7Cn0pOwoKY29uc29sZS5sb2coIkhpISIpOwoKc2V0VGltZW91dChmdW5jdGlvbiB0aW1lb3V0KCkgewogICAgY29uc29sZS5sb2coIkNsaWNrIHRoZSBidXR0b24hIik7Cn0sIDUwMDApOwoKY29uc29sZS5sb2coIldlbGNvbWUgdG8gbG91cGUuIik7!!!PGJ1dHRvbj5DbGljayBtZSE8L2J1dHRvbj4%3D
 // https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/
@@ -7,28 +7,28 @@ console.log('lesson 4');
 // Task 01
 // Создайте промис, который постоянно находиться в состоянии pending.
 // В конструкторе промиса выведите в консоль сообщение "Promise is created".
-let promis1 = new Promise((res, rej) => {
-  console.log('Promise is created')
-});
+// let promis1 = new Promise((res, rej) => {
+//   console.log('Promise is created')
+// });
 
 
 // Task 02
 // Создайте промис, который после создания сразу же переходит в состояние resolve
 // и возвращает строку 'Promise Data'
 // Получите данные промиса и выведите их в консоль
-let promisRes = new Promise((res, rej) => {
-  res('Promise is created')
-});
-console.log(promisRes)
+// let promisRes = new Promise((res, rej) => {
+//   res('Promise is created')
+// });
+// console.log(promisRes)
 
 // Task 03
 // Создайте промис, который после создания сразу же переходит в состояние rejected
 // и возвращает строку 'Promise Error'
 // Получите данные промиса и выведите их в консоль
-let promisRej = new Promise((res, rej) => {
-  rej('Promise Error')
-});
-console.log(promisRej)
+// let promisRej = new Promise((res, rej) => {
+//   rej('Promise Error')
+// });
+// console.log(promisRej)
 
 
 // Task 04
@@ -36,6 +36,12 @@ console.log(promisRej)
 // (Используйте setTimeout)
 // и возвращает строку 'Promise Data'
 // Получите данные промиса и выведите их в консоль
+// let promisDelate = new Promise((res, rej) => {
+//   setTimeout(()=> {
+//     res('Promise Data')
+//   }, 3000)
+// });
+// console.log(promisDelate)
 
 
 // Task 05
@@ -50,6 +56,19 @@ console.log(promisRej)
 // описаного выше объекта: свойство promise получает новый созданный промис,
 // свойства resolve и reject получают ссылки на соответствующие функции
 // resolve и reject. Следующие два обработчика запускают методы resolve и reject.
+
+export let handlePromise: any = {
+  promise: null,
+  resolve: null,
+  reject: null,
+  onSuccess: (paramName: string) => {
+    console.log(`Promise is resolved with data: ${paramName}`)
+  },
+  onError: (paramName: string) => {
+    console.log(`Promise is rejected with error: ${paramName}`)
+  }
+
+}
 
 
 // Task 06
