@@ -61,10 +61,10 @@ export let handlePromise: any = {
   promise: null,
   resolve: null,
   reject: null,
-  onSuccess: (paramName: string) => {
+  onSuccess: function(paramName: string) {
     console.log(`Promise is resolved with data: ${paramName}`)
   },
-  onError: (paramName: string) => {
+  onError: function(paramName: string) {
     console.log(`Promise is rejected with error: ${paramName}`)
   }
 
@@ -77,6 +77,22 @@ export let handlePromise: any = {
 // прибавляет к нему Ваше имя и возвращает новую строку из функции
 // Создайте функцию print, которая выводит в консоль значение своего параметра
 // Добавьте два метода then и передайте созданные функции.
+// let promisName = new Promise((res, rej) => {
+//   setTimeout(()=> {
+//     res('My name is')
+//   }, 1000)
+// });
+// let onSuccess = (string: string) => {
+// return `${string} Anna`
+// }
+// let print = (string: string) => {
+// console.log(string)
+// }
+//
+// promisName.then((value: any) => {
+//   print(onSuccess(value));
+// });
+
 
 
 // Task 7
@@ -84,6 +100,24 @@ export let handlePromise: any = {
 // второй промис возвращает объект {age: 16} через 3 с, а третий {city: ''} через 4с.
 // Получите результаты работы промисов, объедините свойства объектов
 // и выведите в консоль {name, age, city}
+// let promise1 = new Promise((res, rej) => {
+//   setTimeout(()=> {
+//     res({ name: "Anna" })
+//   }, 2000)
+// });
+// let promise2 = new Promise((res, rej) => {
+//   setTimeout(()=> {
+//     res({age: 16})
+//   }, 3000)
+// });
+// let promise3 = new Promise((res, rej) => {
+//   setTimeout(()=> {
+//     res({city: ''})
+//   }, 4000)
+// });
+// Promise.all([promise1, promise2, promise3]).then((values) => {
+//   console.log(values);
+// });
 
 
 
