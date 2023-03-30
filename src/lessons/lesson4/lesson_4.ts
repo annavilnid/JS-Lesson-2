@@ -61,10 +61,10 @@ export let handlePromise: any = {
   promise: null,
   resolve: null,
   reject: null,
-  onSuccess: function(paramName: string) {
+  onSuccess(paramName: string) {
     console.log(`Promise is resolved with data: ${paramName}`)
   },
-  onError: function(paramName: string) {
+  onError(paramName: string) {
     console.log(`Promise is rejected with error: ${paramName}`)
   }
 
