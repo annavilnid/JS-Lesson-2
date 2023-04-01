@@ -47,19 +47,68 @@ someObj.greeting()
 // set current count; - принимает и присваивает значение счетчику
 // rest current count - устанавливает значение счетчика равным 0
 // все методы должны ссылаться на сам объект
+let counter: any = {
+    count: 0,
+    get() {
+        console.log(this.count)
+    },
+    increment() {
+        this.count += 1
+    },
+    decrement() {
+        this.count -= 1
+    },
+    setCounter(count: number) {
+        this.count = count
+    },
+    rest() {
+        this.count = 0
+    },
+}
 
 // Task 03
 // переделайте код из Task 02, что бы сработал следующий код:
 // counter.setCurrentCount(10).increment().increment().increment().decrement().getCurrentCount() // 12
+let counterDeep: any = {
+    count: 0,
+    get() {
+        console.log(this.count)
+        return this
+    },
+    increment() {
+        this.count += 1
+        return this
+    },
+    decrement() {
+        this.count -= 1
+        return this
+    },
+    setCounter(count: number) {
+        this.count = count
+        return this
+    },
+    rest() {
+        this.count = 0
+        return this
+    },
+}
 
 // Task 04
 // Написать функцию конструктор myFirstConstructorFunc которая принимает 2 параметра name и age и возвращает объект
 // у которого будут эти свойства и метод greeting из Task 01
+function myFirstConstructorFunc(name: string, age: number) {
+    return {
+        name: name,
+        age: age,
+        greeting: someObj.greeting
+    }
+}
 
 // Task 05 есть 2 объекта One и Two. С помощью bind и метода sayHello заставьте поздороваться объект One
 
 let One = {name: 'One'};
 let Two = {name: 'Two', sayHello: function() {console.log(`Hello, my name is ${this.name}`)}};
+Two.sayHello.bind(One);
 
 // Task 06
 // создайте объект helperObj у которого есть следующие методы:
@@ -67,6 +116,15 @@ let Two = {name: 'Two', sayHello: function() {console.log(`Hello, my name is ${t
 // setAge - устанавливает полученное значение в свойство age объекта
 // greeting - используется функция sayHello из Task 05
 // можно использовать @ts-ignore
+let helperObj = {
+    changeName(name: string) {
+        this.name = name
+    },
+    setAge(age: number) {
+        this.age = age
+    },
+    greeting: Two.sayHello
+}
 
 // Bind
 // 1) Дана функция sumTwoNumbers, реализовать функцию bindNumber которая принимает функцию sumTwoNumbers и число, и
