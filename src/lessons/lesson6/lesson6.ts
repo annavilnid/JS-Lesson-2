@@ -26,15 +26,50 @@ console.log('Lesson 6');
 
 // Task 04
 class Buyer {
-  constructor(name='test') {
+  name?: string
+  surname?: string
+  adress?: string
+  bankAccout?: string
+  constructor(surname: string, name: string, adress: string, bankAccout: string) {
     this.name = name;
+    this.surname = surname;
+    this.adress = adress;
+    this.bankAccout = bankAccout;
   }
 
-  sayHi() {
-    alert(this.name);
+  setParam(surname: string, name: string, adress: string, bankAccout: string) {
+    this.name = name;
+    this.surname = surname;
+    this.adress = adress;
+    this.bankAccout = bankAccout;
   }
-
+  getParam() {
+    return this.name;
+    return this.surname;
+    return this.adress;
+    return this.bankAccout;
+  }
+  printParam() {
+    console.log(this.name);
+    console.log(this.surname);
+    console.log(this.adress);
+    console.log(this.bankAccout);
+  }
 }
+
+let buyers: any = [];
+
+buyers.push(new Buyer('Smith', 'John', '123 Main St.',  '123456123456'))
+
+buyers.push(new Buyer('Jones', 'Mary', '456 Main St.',  '123456123457'))
+
+buyers.push(new Buyer('Brown', 'William', '789 Main St.',  '123456123458'))
+
+buyers.push(new Buyer('Johnson', 'Patricia','012 Main St.',  '321654321654'))
+
+let result = [...buyers.surname].map(m => m.surname.sort())
+console.log(result)
+
 // Класс Покупатель: Фамилия, Имя, Адрес, Номер банковского счета;
 // Методы: установка значений атрибутов, получение значений атрибутов, вывод информации.
 // Создать массив объектов данного класса.
