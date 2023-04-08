@@ -68,7 +68,7 @@ buyers.push(new Buyer('Brown', 'William', '789 Main St.',  '123456123458'))
 buyers.push(new Buyer('Johnson', 'Patricia','012 Main St.',  '321654321654'))
 
 let result = [...buyers].sort((a, b) => a.surname < b.surname ? -1 : 1 )
-console.log(result)
+
 
 // Класс Покупатель: Фамилия, Имя, Адрес, Номер банковского счета;
 // Методы: установка значений атрибутов, получение значений атрибутов, вывод информации.
