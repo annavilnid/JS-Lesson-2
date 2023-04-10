@@ -75,7 +75,33 @@ console.log(result2)
 // Методы: установка значений атрибутов, получение значений атрибутов, вывод информации.
 // Создать массив объектов данного класса.
 // Вывести список покупателей в алфавитном порядке и список покупателей, у которых номер кредитной карточки находится в заданном диапазоне.
+class Car {
+  carBrand?: string
+  cylindersNumber?: number
+  power?: string
+  constructor(carBrand: string, cylindersNumber: number, power: string) {
+    this.carBrand = carBrand;
+    this.cylindersNumber = cylindersNumber;
+    this.power = power;
+  }
+  printParam() {
+    console.log(this);
+  }
+}
 
+class Lorry extends Car{
+  capacity?: string
+  constructor(carBrand: string, cylindersNumber: number, power: string, capacity: string) {
+    super(carBrand, cylindersNumber, power);
+    this.capacity = capacity;
+  }
+  setBrand(carBrand: string) {
+    this.carBrand = carBrand;
+  }
+  setCapacity(capacity: string) {
+    this.capacity = capacity;
+  }
+}
 // Task 05
 // Создать класс машина - имеющий марку, число цилиндров, мощность. Определить конструктор и функцию печати.
 // Создать производный класс – грузовик, имеющий грузоподъемность кузова.
