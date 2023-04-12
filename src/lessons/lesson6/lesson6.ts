@@ -11,7 +11,36 @@ console.log('Lesson 6');
 // Создайте структуру с именем student, содержащую поля: имя и фамилия, номер группы, успеваемость (массив из пяти элементов).
 // Создать массив из десяти элементов такого типа, упорядочить записи по возрастанию среднего балла.
 // Добавить возможность вывода фамилий и номеров групп студентов, имеющих оценки, равные только 4 или 5.
+class Student {
+  studentName?: string
+  groupNumber?: number
+  academicPerformance?: [number, number, number, number, number]
+  constructor(studentName: string, groupNumber: number, academicPerformance: [number, number, number, number, number] ) {
+    this.studentName = studentName;
+    this.groupNumber = groupNumber;
+    this.academicPerformance = academicPerformance;
+  }
 
+  printTopLevelStudent() {
+    console.log(this);
+    console.log('топ студенты');
+  }
+}
+
+let students: any = [];
+students.push(new Student('John', 1, [5, 4, 5, 4, 5]));
+students.push(new Student('Anna', 2, [3, 4, 5, 4, 3]));
+students.push(new Student('Andrey', 5, [3, 4, 3, 4, 3]));
+students.push(new Student('Mary', 4, [5, 5, 5, 4, 5]));
+students.push(new Student('Kate', 3, [5, 5, 3, 4, 5]));
+console.log(students)
+function average(nums: [number, number, number, number, number]) {
+  return nums.reduce((a, b) => (a + b)) / nums.length;
+}
+students.sort((a: any, b: any) => average(a.academicPerformance) - average(b.academicPerformance))
+console.log(students)
+
+let topStudents = students.map((s: any) => s.academicPerformance.filter((m: any) => m > 3))
 // Task 02
 // Создать класс с двумя переменными. Добавить конструктор с входными параметрами и инициализирующий члены класса по умолчанию.
 // Можно ли создать метод на экземпляре класса который будет удалять сам экземпляр класса?
