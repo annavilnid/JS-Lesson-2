@@ -40,11 +40,30 @@ function average(nums: [number, number, number, number, number]) {
 students.sort((a: any, b: any) => average(a.academicPerformance) - average(b.academicPerformance))
 console.log(students)
 
-let topStudents = students.map((s: any) => s.academicPerformance.filter((m: any) => m > 3))
+let topStudents = students.filter((s: any) => s.academicPerformance.filter((m: number) => m > 3).length === 5)
+console.log(topStudents)
+
 // Task 02
 // Создать класс с двумя переменными. Добавить конструктор с входными параметрами и инициализирующий члены класса по умолчанию.
 // Можно ли создать метод на экземпляре класса который будет удалять сам экземпляр класса?
 // Можно ли создать метод класса который будет удалять экземпляр класса?
+class Test {
+  a?: string
+  b?: string
+  print?: any
+  constructor(a: string, b: string) {
+    this.a = a;
+    this.b = b;
+  }
+}
+
+let newTest = new Test('a', 'b')
+console.log(newTest)
+newTest.print =  delete newTest;
+console.log(newTest)
+
+
+// newTest.delete =  delete newTest;
 
 // Task 03
 // Составить описание класса для представления времени. Предусмотреть возможности установки времени и изменения его отдельных
