@@ -1,3 +1,5 @@
+import {createDispatchHook} from "react-redux";
+
 console.log('Lesson 6');
 
 // Class
@@ -50,7 +52,6 @@ console.log(topStudents)
 class Test {
   a?: string
   b?: string
-  print?: any
   constructor(a: string, b: string) {
     this.a = a;
     this.b = b;
@@ -58,12 +59,11 @@ class Test {
 }
 
 let newTest = new Test('a', 'b')
-console.log(newTest)
-newTest.print =  delete newTest;
-console.log(newTest)
 
+// видимо нет так как объект удалиться из памяти если на него нет ссылок
+//delete, присвоение null, undefined и т.п. не имеет прямого результата в виде удаления объекта из памяти. Другими словами, вам никто не может гарантировать что объект будет удалён из памяти при выполнении вышеописанных действий.
+//JS удаляет объекты автоматически как только счётчик ссылок на объект (aka количество переменных, ссылающихся на объект) достигает нуля. Делается это при помощи специального механизма, который называется Garbage Сollector (процесс называется Garbage Сollection). Это внутренний механизм интерпретатора. Программист не обладает средствами прямого влияния на его работу. Например, программиста не может выполнить garbage collection по своей прихоти. Или как-то сообщить сборщику мусора, о том что вот именно этот объект нужно удалить несмотря на то что на него остались ссылки.
 
-// newTest.delete =  delete newTest;
 
 // Task 03
 // Составить описание класса для представления времени. Предусмотреть возможности установки времени и изменения его отдельных
@@ -71,6 +71,52 @@ console.log(newTest)
 // Создать методы изменения времени на заданное количество часов, минут и секунд.
 // Создать метод выводящий время в строке формата HH:MM:SS
 // Создать класс по вышеуказанному описанию
+class Time {
+  h?: number
+  m?: number
+  s?: number
+  constructor(h: number, m: number, s: number) {
+    this.changeH(h)
+    this.changeM(m)
+    this.changeS(s)
+  }
+
+  changeH(h: number) {
+    if (h >= 0 && h <= 24) {
+      this.h = h;
+    } else {
+      throw Error('Error format hours')
+    }
+  }
+
+  changeM(m: number) {
+    if (m >= 0 && m <= 60) {
+      this.m = m;
+    } else {
+      throw Error('Error format minutes')
+    }
+  }
+
+  changeS(s: number) {
+    if (s >= 0 && s <= 60) {
+      this.s = s;
+    } else {
+      throw Error('Error format Seconds')
+    }
+  }
+
+  printTime() {
+    let hh;
+    let mm;
+    let ss;
+    if(this.h && this.m && this.s) {
+      this.h < 10 ? hh = `0${this.h}` : hh = `${this.h}`;
+      this.m < 10 ? mm = `0${this.m}` : mm = `${this.m}`;
+      this.s < 10 ? ss = `0${this.s}` : ss = `${this.s}`;
+      console.log(`${hh}:${mm}:${ss}`)
+    }
+  }
+}
 
 // Task 04
 class Buyer {
