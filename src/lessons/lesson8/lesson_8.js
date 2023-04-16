@@ -140,6 +140,16 @@ alert(f(2)(3));
 
 // Task 11
 // Есть строка, состоящая из разных скобок - str = "())({}}{()][][", написать функцию проверки закрыты ли все.
+let check = (str) => {
+	let stack = [], open = "([{", close = ")]}";
+	for (const ch of str)
+	{
+		let i = open.indexOf(ch);
+		if (i > -1) stack.push(close[i]);
+		if (close.includes(ch) && ch != stack.pop()) return false
+	}
+	return stack.length == 0;
+}
 
 // Task 12
 // Необходимо написать функцию, принимающую в аргументах массив целых чисел и возвращающую новый массив, состоящий только из уникальных значений первого массива.
