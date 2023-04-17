@@ -134,6 +134,38 @@ alert(f(2)(3));
 
 // Task 9
 // Реализовать функции seven, plus, one, five, minus, two так, что бы следующие вызовы работали seven(plus(one())) -> 8. five(minus(two())) -> 3
+function one(arg) {
+	return 1 + (arg || 0);
+}
+
+function two(arg) {
+	return 2 + (arg || 0);
+}
+
+function five(arg) {
+	return 5 + (arg || 0);
+}
+
+function seven(arg) {
+	return 7 + (arg || 0);
+}
+
+function plus(arg) {
+	return arg;
+}
+
+function minus(arg) {
+	return -arg;
+}
+
+console.log(seven(plus(one())))
+console.log(five(minus(two())))
+
+
+function five(arg) {
+	return 5 + (arg || 0);
+}
+
 
 // Task 10
 // Реализовать функцию сортировки массива пузырьком
