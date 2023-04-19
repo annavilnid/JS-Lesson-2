@@ -200,6 +200,7 @@ let double = (arr) => {
 // Необходимо написать функцию, возвращающую значения всех вершин дерева
 // getTreeValues(tree); // => [1, 2, 3, 4, 5, 6, 7]
 
+
 let arr = []
 function getTreeValues(obj) {
 	arr.push(obj.value);
@@ -257,10 +258,45 @@ Bomb.prototype.blowUp = function () {
 // Task 17
 // Необходимо реализовать функцию, принимающую в аргументах строку, состоящую из букв и вернуть новую строку,
 // в которой повторяющиеся буквы заменены количеством повторений.
+let rle = (str) => {
+	let result = '';
+	let count = 1;
+	for (let i = 0; i < str.length; i++){
+		if (str[i] !== str[i+1] && count === 1) {
+			result += str[i]
+			count = 1;
+		} else if (str[i] !== str[i+1] && count > 1) {
+			result += str[i] + count
+			count = 1
+		} else {
+			count += 1
+		}
+		console.log(count)
+	}
+}
 // rle('AVVVBBBVVXDHJFFFFDDDDDDHAAAAJJJDDSLSSSDDDD'); // => 'AV3B3V2XDHJF4D6HA4J3D2SLS3D4'
 
 // Task 18
 // Реализуйте функцию isSorted(), которая возвращает true или false в зависимости о того, отсортирован ли переданный ей числовой массив.
+const comparator = (a, b) => {
+	if (typeof a === 'number' && typeof b === 'number') {
+		return a - b;
+	} else {
+		return a.toString().localeCompare(b.toString());
+	}
+};
+
+const isSorted = array => {
+	const count = array.length;
+	return array.every((current, index) => {
+		if (index + 1 < count) {
+			const next = array[index + 1];
+			return comparator(current, next) <= 0;
+		} else {
+			return true;
+		}
+	});
+};
 
 // Task 19
 // Реализуйте функцию missing(), которая принимает неотсортированный массив уникальных чисел (то есть, числа в нём не повторяются)
