@@ -325,6 +325,21 @@ const isSorted = (array) => {
 // list.has(4)                           // true
 // list.has(6)                           // false
 
+class LinkedList {
+
+	constructor(...arg) {
+
+  this.arg = arg
+
+	}
+	add() {
+    arg=
+	}
+	has(){
+
+	},
+}
+
 // Task 21
 // Что выведет консоль?
 
