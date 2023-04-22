@@ -314,6 +314,14 @@ const isSorted = (array) => {
 // missing([2, 3, 4])                  // 1
 // missing([5, 1, 4, 2])               // 3
 // missing([1, 2, 3, 4])               // undefined
+let missing = (array) => {
+	let sortedArray = [...array].sort((a, b) => a - b)
+	for (let i=1; i<=sortedArray.at(-1); i++) {
+		if (sortedArray[i-1] !== i) {
+			return i;
+		}
+	}
+}
 
 // Task 20
 // Реализуйте класс LinkedList, не используя встроенные массивы JavaScript ( [] ). Ваш LinkedList должен поддерживать лишь 2 метода: add() и has().
@@ -326,18 +334,15 @@ const isSorted = (array) => {
 // list.has(6)                           // false
 
 class LinkedList {
-
-	constructor(...arg) {
-
-  this.arg = arg
-
+	constructor(...args) {
+		this.args = args
 	}
-	add() {
-    arg=
+	add(arg) {
+		this.args = [...this.args, arg]
 	}
-	has(){
-
-	},
+	has(arg){
+		return this.args.includes(arg)
+	}
 }
 
 // Task 21
