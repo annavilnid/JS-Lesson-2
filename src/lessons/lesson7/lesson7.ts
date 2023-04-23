@@ -127,6 +127,15 @@ anna.think()
 
 // Task 05 сделать
 // Используя метод Apply реализовать свой собственный метод bind
+function bind(fn, context, ...rest) {
+  return function(...args) {
+    const uuid = Date.now().toString();
+    context[uuid] = fn;
+    const res = context[uuid](...rest, ...args);
+    delete context[uuid];
+    return res;
+  }
+}
 
 
 // just a plug
