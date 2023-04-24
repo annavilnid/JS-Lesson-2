@@ -128,8 +128,10 @@ anna.think()
 // Task 05 сделать
 // Используя метод Apply реализовать свой собственный метод bind
 
-function bind(fn: any, context: any, ...args: any) {
-  return fn.apply(context, [...args]);
+function bind(fn, context) {
+  return function(...arg) {
+    return fn.apply(context, [...arg]);
+  }
 }
 
 // function bind(fn, context, ...rest) {
