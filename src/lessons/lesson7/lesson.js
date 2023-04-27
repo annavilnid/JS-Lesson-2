@@ -16,3 +16,18 @@ class Animal {
     console.log(`${this.name} sleeping`)
   }
 }
+
+
+class Monkey extends Animal {
+  constructor(name = 'Monkey') {
+    super(name);
+  }
+
+  roar() {
+    console.log(`${this.name} roaring`)
+  }
+
+  climb() {
+    console.log(`${this.name} climbing`)
+  }
+}
